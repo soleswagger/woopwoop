@@ -1,7 +1,10 @@
 import "~/styles/globals.css";
-
+import MyButton from "./MyButton";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import {  ClerkProvider,  SignInButton,  SignedIn,  SignedOut,  UserButton} from '@clerk/nextjs'
+
+
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -11,10 +14,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+        
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          {children}
+        <MyButton></MyButton>
+        </body>
+      </html>
+    </ClerkProvider>
+  )
 }
+
