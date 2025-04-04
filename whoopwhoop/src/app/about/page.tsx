@@ -1,16 +1,41 @@
-import Link from "next/link"
+"use client";
+import { useState, useEffect } from "react";
+import uploadData from "src/app/api/upload-stuff/upload";
+import { useRouter } from "next/navigation";
 
-export default function Page () {
-    return <main>
-        <section>
-        <img src="https://th.bing.com/th/id/R.222d80144e6451ee88569fbb5d88fe24?rik=8kLicZF31hqIXA&riu=http%3a%2f%2fil2.picdn.net%2fshutterstock%2fvideos%2f697816%2fthumb%2f1.jpg&ehk=TiTUb7vPMjRdUqP3RtKys8AYP9FQVMKNpRKtG3HjQEM%3d&risl=&pid=ImgRaw&r=0"></img>
+export default function UploadForm() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const router = useRouter();
 
-  <h1>cowabunga</h1>
-  <br />
-  <br />
-  <br />
-  <br />
-  <img src="https://vignette.wikia.nocookie.net/lifeinthedreamhouse/images/e/e5/ArticleSchlond.png/revision/latest?cb=20130603064423" alt=""/>
-</section>
-    </main>
+  useEffect(() => {
+    // This hook will run after the component is mounted on the client side
+    // Any code that interacts with the browser (e.g., navigation, DOM manipulation) should go here
+  }, []); // Empty dependency array ensures it runs only once, after initial render
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await uploadData(title, content);
+    console.log(result); // Handle the result as needed
+    router.push("/"); // Redirect to the home page after submission, not needed but good to have as example
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+        required
+      />
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Content"
+        required
+      />
+      <button type="submit">Upload</button>
+    </form>
+  );
 }
