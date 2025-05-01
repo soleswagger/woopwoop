@@ -22,20 +22,43 @@ export default function UploadForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <div className="card bg-base-100 image-full w-96 shadow-xl">
+
+<div className="card-body">
+  <h2 className="card-title">Notes Title</h2>
+      <input className=""
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
         required
       />
+      </div></div>
+      <div className="card bg-base-100 image-full w-96 shadow-xl">
+
+<div className="card-body">
+  <h2 className="card-title">Notes Content</h2>
+  <figure>
+  
+
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
         required
       />
-      <button type="submit">Upload</button>
+      </figure>
+  <div className="card-actions justify-end">
+  </div>
+</div>
+</div>
+
+      <button className="btn btn-primary bg-cyan-500 hover:bg-green-600" type="submit">Upload</button>
     </form>
   );
 }
+
+
+import { db } from "~/server/db";
+ import { posts } from "~/server/db/schema";
+ 

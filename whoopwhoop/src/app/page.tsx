@@ -8,19 +8,6 @@ export default function HomePage() {
       Notes App!
     </h1>   
     <img src="https://play-lh.googleusercontent.com/hJ9hjYfV5akC9X7r-WkdxMK39tPUJ5-2OmU6kAaeqOozXPKpjFkFns5yR2LkbSh2SXo"></img>
-<div className="card bg-base-100 image-full w-96 shadow-xl">
-
-  <div className="card-body">
-    <h2 className="card-title">Notes</h2>
-    <p>Notes Description</p>
-    <figure>
-    
-  </figure>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary bg-cyan-500 hover:bg-green-600">Edit</button>
-    </div>
-  </div>
-</div>
 <div className="card card-side bg-base-100 shadow-sm">
   <figure>
     <img
